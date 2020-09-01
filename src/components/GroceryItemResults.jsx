@@ -43,12 +43,12 @@ class GroceryItemResults extends Component {
   render() {
     // Render each product as card
     return (
-      <MDBContainer>
+      <MDBContainer> 
         {this.props.products && (
           <MDBRow>
           {this.props.products.map((item) => {
             return (
-              <MDBCol size="3" className="padding justify-content-center">
+              <MDBCol  xs="12" sm="6" md="4" lg="3" className="padding justify-content-center">
                 {this.props.products.length > 1 && (
                   <MDBCard className="card align-items-center padding h-100">
                     {item.title}
@@ -72,11 +72,7 @@ class GroceryItemResults extends Component {
             );
           })}
         </MDBRow>
-
-
-          )
-        }
-        
+        )}
       </MDBContainer>
     );
   }

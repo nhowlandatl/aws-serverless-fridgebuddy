@@ -13,6 +13,7 @@ import "./FullPageIntroWithFixedNavbar.css";
 import { Auth } from 'aws-amplify';
 
 // Local imports
+import "./Fridge.css"; 
 import { fetchFridge } from '../actions/fridgeActions'
 import { clearProducts } from '../actions/fridgeActions'
 // import { getUserFridge } from '../actions/fridgeActions' 
@@ -63,6 +64,28 @@ export class Fridge extends Component {
   //     id: item.id,
   //   };
   // }
+  // onDelete = (item) => {
+  //   let apiName = 'globalindextest'; 
+  //   let path = '/fridgeitems';
+  //   let date = new Date();
+  //   API.post(apiName, path, {
+  //     body: {
+  //       id: uuidv4(),
+  //       username: this.props.user.username,
+  //       expiration: '1-22-2021',
+  //       createdAt: date, 
+  //       product_id: item.id,
+  //       product_image: item.image,
+  //       product_name: item.title,
+  //     }
+  //   })
+  //   .then(response => {
+  //     console.log(response)
+  //   })
+  //   .catch(error => {
+  //     console.log(error.response)
+  //   });
+  // };
 
   render() {
     return (
@@ -73,7 +96,7 @@ export class Fridge extends Component {
             <MDBRow>
             {this.props.fridgeItems.map((item) => {
               return (
-                <MDBCol size="3" className="padding justify-content-center">
+                <MDBCol  xs="12" sm="6" md="4" lg="3" className="padding justify-content-center">
                   <MDBCard className="card align-items-center padding h-100">
                     <MDBCardImage
                       className="img-fluid padding"

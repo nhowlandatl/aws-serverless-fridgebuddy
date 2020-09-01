@@ -6,7 +6,7 @@ import zach from "./assets/zach.jpeg";
 import shankar from "./assets/shankar.jpeg";
 import "./AboutUs.css"; 
 
-export class AboutUs extends React.Component {
+class AboutUs extends React.Component {
 
 render() {
   return (

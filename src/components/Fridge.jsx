@@ -10,7 +10,8 @@ import {
   MDBBtn
 } from "mdbreact";
 import "./FullPageIntroWithFixedNavbar.css";  
-import { Auth } from 'aws-amplify';
+import { Auth, API } from 'aws-amplify';
+import "@fortawesome/fontawesome-free/css/all.min.css";
 
 // Local imports
 import "./Fridge.css"; 
@@ -56,36 +57,22 @@ export class Fridge extends Component {
   //     console.log(error.response)
   //   })
   // }
+
   
   // Delete item from fridge
-  // To be implemented
-  // onDelete(item) {
-  //   const product = {
-  //     id: item.id,
-  //   };
-  // }
-  // onDelete = (item) => {
-  //   let apiName = 'globalindextest'; 
-  //   let path = '/fridgeitems';
-  //   let date = new Date();
-  //   API.post(apiName, path, {
-  //     body: {
-  //       id: uuidv4(),
-  //       username: this.props.user.username,
-  //       expiration: '1-22-2021',
-  //       createdAt: date, 
-  //       product_id: item.id,
-  //       product_image: item.image,
-  //       product_name: item.title,
-  //     }
-  //   })
-  //   .then(response => {
-  //     console.log(response)
-  //   })
-  //   .catch(error => {
-  //     console.log(error.response)
-  //   });
-  // };
+  onDelete = (item) => {
+    let apiName = 'globalindextest'; 
+    let path = `/fridgeitems/object/${item.id}/${this.props.user.username}`;
+    API.del(apiName, path) 
+    .then(response => {
+      console.log(response)
+      // Render fridge changes
+      this.props.fetchFridge(this.props.user) 
+    })
+    .catch(error => {
+      console.log(error.response)
+    });
+  };
 
   render() {
     return (
@@ -98,6 +85,12 @@ export class Fridge extends Component {
               return (
                 <MDBCol  xs="12" sm="6" md="4" lg="3" className="padding justify-content-center">
                   <MDBCard className="card align-items-center padding h-100">
+                    {this.props.loading === true && (
+                      <div>Loading...
+                        <i class="fas fa-spinner fa-spin"></i>
+                      </div>
+                    )}
+                    {item.product_name}
                     <MDBCardImage
                       className="img-fluid padding"
                       src={item.product_image}

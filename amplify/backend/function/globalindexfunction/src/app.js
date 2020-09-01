@@ -84,7 +84,6 @@ app.get(path, function(req, res) {
     IndexName: 'users',
     KeyConditionExpression: "username = :username",
     ExpressionAttributeValues: {
-      // ":username": "nick" // this works 
       ":username": username
     }
   }
@@ -228,8 +227,8 @@ app.delete(path + '/object' + hashKeyPath + sortKeyPath, function(req, res) {
     if(err) {
       res.statusCode = 500;
       res.json({error: err, url: req.url});
-    } else {
-      res.json({url: req.url, data: data});
+    } else {  
+      res.json({success: 'delete succeed!', url: req.url, data: data.Items})
     }
   });
 });

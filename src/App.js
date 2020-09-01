@@ -14,7 +14,7 @@ const App = withRouter (({ location }) => {
     <div className="App">
       {
         // Don't render Navbar on login page
-        location.pathname !== '/login' && <NavbarFixed />
+        location.pathname !== '/login' && <NavbarFixed /> 
       }
       <Route exact path="/" component={FullPageIntroWithFixedNavbar} /> 
       <Route path="/about" component={AboutUs} /> 

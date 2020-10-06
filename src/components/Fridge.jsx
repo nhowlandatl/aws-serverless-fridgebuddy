@@ -77,9 +77,11 @@ export class Fridge extends Component {
   render() {
     return (
       <MDBContainer className="header-padding">
-        <h2>Welcome to Your Fridge!</h2>
-        <h5>Here is what's currently in your fridge.</h5>
-        {this.props.fridgeItems.length > 1 && (
+        {/* Conditional render: if fridge has contents, render; else, show empty message */}
+        {this.props.fridgeItems.length > 1 ? 
+          <div>
+            <h2>Welcome to Your Fridge!</h2>
+            <h5>Here is what's currently in your fridge.</h5>
             <MDBRow>
             {this.props.fridgeItems.map((item) => {
               return (
@@ -111,7 +113,10 @@ export class Fridge extends Component {
               );
             })}
           </MDBRow>
-            )    
+          </div>
+          :
+          <div>Empty</div>
+                
           }
       </MDBContainer>
     );
